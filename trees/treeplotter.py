@@ -13,17 +13,19 @@ from trees.trees import get_tree_deep
 
 # 决策节点风格
 DECISION_NODE = {
-    'boxstyle': 'sawtooth',
-    'fc': '0.8'
+    'boxstyle': 'roundtooth',
+    'pad': 0.8,
+    'fc': 'royalblue'
 }
 # 叶结点风格
 LEAF_NODE = {
     'boxstyle': 'round4',
-    'fc': '0.8'
+    'pad': 0.8,
+    'fc': 'lime'
 }
 # 箭头风格
 ARROW = {
-    'arrowstyle': '<-'
+    'arrowstyle': '<|-'
 }
 # 全局变量存储
 VALUES = local()
@@ -61,7 +63,14 @@ def plot_mid_text(ax, text, center_point, parent_point):
     """
     x_mid = (parent_point[0] - center_point[0])/2 + center_point[0]
     y_min = (parent_point[1] - center_point[1])/2 + center_point[1]
-    ax.text(x_mid, y_min, text, backgroundcolor='white')
+    ax.text(
+        x_mid,
+        y_min,
+        text,
+        backgroundcolor='white',
+        va='center',
+        ha='center',
+    )
 
 
 def plot_tree(ax, tree, branch='', parent_point=(0.5, 1)):

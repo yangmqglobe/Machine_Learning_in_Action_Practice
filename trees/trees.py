@@ -7,6 +7,7 @@
 from collections import defaultdict
 from math import log
 from operator import itemgetter
+import json
 
 
 def create_data_set():
@@ -176,3 +177,13 @@ def classify(x, labels, tree):
         return classify(x, labels, root[branch])
     else:
         return tree
+
+
+def store_tree(tree, path):
+    with open(path, 'w') as f:
+        json.dump(tree, f)
+
+
+def load_tree(path):
+    with open(path) as f:
+        return json.load(f)
